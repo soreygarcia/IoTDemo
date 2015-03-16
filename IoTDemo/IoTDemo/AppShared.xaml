@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<forms:Application xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Core"
+            xmlns:converters="clr-namespace:IoTDemo.Converters;assembly=IoTDemo"
+            x:Class="IoTDemo.AppShared">
+  <Application.Resources>
+    <ResourceDictionary>
+      <converters:BoolToColorConverter x:Key="BoolToColorConverter" />
+      <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </ResourceDictionary>
+  </Application.Resources>
+</forms:Application>

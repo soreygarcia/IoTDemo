@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="Theme.Splash" parent="@android:style/Theme.Light">
+    <item name="android:colorBackground">@android:color/white</item>
+    <item name="android:windowContentOverlay">@drawable/splashscreen</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+  
+  
+  
+</resources>

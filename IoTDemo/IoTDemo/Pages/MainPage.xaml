@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IoTDemo.Pages.MainPage"
+             Title="Log de Eventos"
+             BackgroundColor="#f9f9f9">
+    <Grid 
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Grid 
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            IsVisible ="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=true}">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Padding="10">
+                <Image Source="Logo.png" WidthRequest="100" />
+            </StackLayout>
+            <ListView
+              Grid.Row="1" 
+              RowHeight="60"
+              HasUnevenRows="True"
+              ItemsSource="{Binding Events}"  >
+              <ListView.ItemTemplate 
+                HasUnevenRows="True">
+                <DataTemplate>
+                    <ViewCell Height="60">
+                        <ViewCell.View>
+                          <StackLayout Padding="10">
+                            <Label
+                                VerticalOptions="Center"
+                                TextColor="Black"
+                                FontSize="20"
+                                Text="{Binding Description}" />
+                            <Label
+                                VerticalOptions="Center"
+                                TextColor="Gray"
+                                FontSize="12"
+                                Text="{Binding Date}" />
+                          </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Grid.Row="2" Padding="10,20">
+                <Button Text="Recargar" 
+                    BackgroundColor="#ee7955"
+                    TextColor="#ffffff"
+                    Command="{Binding RetryCommand}" />
+                <Label 
+                   TextColor="#cecece"
+                   FontSize="15"
+                   YAlign="Center"
+                   XAlign="Center"
+                   HorizontalOptions="Center"
+                   Text="Aplicación demo Xamarin Forms creada por Avanet.co" />
+            </StackLayout>
+        </Grid>
+        <Grid
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              IsVisible ="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+
+            <ActivityIndicator 
+                Color="#ee7955"
+                IsRunning="true"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentPage>
