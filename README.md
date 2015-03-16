@@ -3,7 +3,7 @@
 En Mobile Services crear una table EventLog con una columna Description.
 
 En el script de inserción configurar lo siguiente:
-
+```
 //Ejemplo desde azure.com
 
 function insert(item, user, request) {
@@ -33,3 +33,4 @@ request.execute({
     }
   });
 }
+```
