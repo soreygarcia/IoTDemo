@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTDemo.NetworkTest", "IoTDemo.NetworkTest\IoTDemo.NetworkTest.csproj", "{60FBDC02-5165-4B80-9B91-DE12B5CADF91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTDemo.Netduino", "IoTDemo.Netduino\IoTDemo.Netduino.csproj", "{13B5AAEE-1E23-469B-B022-E9B75E344B81}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		IoTDemo\IoTDemo\IoTDemo.projitems*{602d43fb-1e06-45cf-933f-d9c59cf04900}*SharedItemsImports = 13
@@ -128,6 +130,46 @@ Global
 		{60FBDC02-5165-4B80-9B91-DE12B5CADF91}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{60FBDC02-5165-4B80-9B91-DE12B5CADF91}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
 		{60FBDC02-5165-4B80-9B91-DE12B5CADF91}.Release|x86.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|Any CPU.Deploy.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|Mixed Platforms.Build.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|Any CPU.Deploy.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|Mixed Platforms.Build.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|ARM.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{13B5AAEE-1E23-469B-B022-E9B75E344B81}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

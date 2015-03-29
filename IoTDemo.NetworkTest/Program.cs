@@ -7,100 +7,71 @@ using Microsoft.SPOT.Hardware;
 using SecretLabs.NETMF.Hardware;
 using SecretLabs.NETMF.Hardware.Netduino;
 using System.IO;
+using EmbeddedLab.NetduinoPlus.Day5.IO;
+using IoTDemo.NetworkTest.DTOs;
 
 namespace IoTDemo.NetworkTest
 {
     public class Program
     {
-        static OutputPort ledOnBoard = new OutputPort(Pins.ONBOARD_LED, false);
         public static void Main()
         {
-            var potPin = new Microsoft.SPOT.Hardware.AnalogInput(Cpu.AnalogChannel.ANALOG_5);
-            //En una futura version la idea es adecuar el nivel de sensibilidad de la luz con el potenciometro
-            double limit = 0.70;
-            double rawValue;
-            var externalLedPortRed = new OutputPort(Pins.GPIO_PIN_D0, false);
-            var externalLedPortGreen = new OutputPort(Pins.GPIO_PIN_D7, false);
-            var voltagePortluz = new Microsoft.SPOT.Hardware.AnalogInput(Cpu.AnalogChannel.ANALOG_1);
+            /*
+            // Create an instance of Logger if you need to write to a custom location.
+            Logger customLogger = new Logger(@"One\OneOne", "one.txt", true);
+            customLogger.CustomPrefixDateTime = false;
+            customLogger.CustomLogToFile = true;
+            ///customLogger.LogCustom("All", "these", "will", "be", "combined", "in", "to", "one", "string", "-CustomLogger1.");
+            Debug.Print(customLogger.CustomFilePath);
+            */
+            
+            // Directly start logging, no need to create any instance of Logger class
+            //Logger.LogToFile = true;    // if false it will only do Debug.Print()
+            //Logger.Append = true;       // will append the information to existing if any
+            //Logger.PrefixDateTime = true; // add a time stamp on each Log call. Note: Netduino time is not same as clock time.
 
-            while (true)
-            {
-                int potValue = (int)potPin.Read();
-                Debug.Print("Potenciómetro: " + potValue.ToString());
+            //// any number of arguments can be passed. They will appended by a white space
+            //Logger.Log("Hello World in SD Card");
+            //Debug.Print(Logger.LogFilePath);
 
-                rawValue = voltagePortluz.Read();
-                Debug.Print("Voltage de fotoresistencia =" + rawValue.ToString());
-
-                if (potValue == 1)
-                {
-
-                    if (rawValue >= limit) // si sobrepasa un umbral 
-                    {
-                        ledOnBoard.Write(false);
-                        Debug.Print("La luz está encendida.");
-                        SendEvent("La luz está encendida.");
-
-                        externalLedPortRed.Write(true);
-                        externalLedPortGreen.Write(false);
-                    }
-                    else
-                    {
-                        ledOnBoard.Write(true);
-                        Debug.Print("La luz está apagada.");
-                        externalLedPortRed.Write(false); 
-                        externalLedPortGreen.Write(true);
-                    }
-                }
-                else
-                {
-                    Debug.Print("La alarma está apagada.");
-                    SendEvent("La alarma está apagada.");
-                    externalLedPortRed.Write(false);
-                    externalLedPortGreen.Write(false);
-                }
-
-                Thread.Sleep(1000);
-            }
+            Debug.Print("Enviando mensaje...");
+            SendEvent("Hello World");
+            Thread.Sleep(Timeout.Infinite);
         }
 
         public static void SendEvent(string log)
         {
-
             try
             {
-                ledOnBoard.Write(true);
+                EventLog eventLog = new EventLog() { Description = log };
+                string json = Json.NETMF.JsonSerializer.SerializeObject(eventLog);
 
-                string json = "{\"Description\":\"" + log + "\"}";
+                Debug.Print("Log enviado");
+                Debug.Print(json);
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://cloudrsmed.azure-mobile.net/tables/EventLog");
-                //{"Description":"Sample"}
-                httpWebRequest.ContentType = "text/json";
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://cloudrsmed.azure-mobile.net/tables/EventLog");
                 httpWebRequest.Method = "POST";
+                httpWebRequest.Accept = "application/json";
+                httpWebRequest.ContentType = "application/json; charset=UTF-8";
                 httpWebRequest.ContentLength = json.ToCharArray().Length;
-
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     streamWriter.Write(json);
                     streamWriter.Flush();
                     streamWriter.Close();
+                }
 
-                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                    {
-                        var result = streamReader.ReadToEnd();
-                        Debug.Print(result);
-                    }
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    Debug.Print(result);
                 }
             }
             catch (Exception ex)
             {
                 Debug.Print("Error enviando evento: " + ex.Message);
             }
-            finally
-            {
-                ledOnBoard.Write(false);
-            }
         }
-
     }
 }
