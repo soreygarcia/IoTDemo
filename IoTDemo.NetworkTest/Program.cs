@@ -16,23 +16,14 @@ namespace IoTDemo.NetworkTest
     {
         public static void Main()
         {
-            /*
-            // Create an instance of Logger if you need to write to a custom location.
-            Logger customLogger = new Logger(@"One\OneOne", "one.txt", true);
-            customLogger.CustomPrefixDateTime = false;
-            customLogger.CustomLogToFile = true;
-            ///customLogger.LogCustom("All", "these", "will", "be", "combined", "in", "to", "one", "string", "-CustomLogger1.");
-            Debug.Print(customLogger.CustomFilePath);
-            */
-            
             // Directly start logging, no need to create any instance of Logger class
-            //Logger.LogToFile = true;    // if false it will only do Debug.Print()
-            //Logger.Append = true;       // will append the information to existing if any
-            //Logger.PrefixDateTime = true; // add a time stamp on each Log call. Note: Netduino time is not same as clock time.
+            Logger.LogToFile = true;    // if false it will only do Debug.Print()
+            Logger.Append = true;       // will append the information to existing if any
+            Logger.PrefixDateTime = true; // add a time stamp on each Log call. Note: Netduino time is not same as clock time.
 
-            //// any number of arguments can be passed. They will appended by a white space
-            //Logger.Log("Hello World in SD Card");
-            //Debug.Print(Logger.LogFilePath);
+            // any number of arguments can be passed. They will appended by a white space
+            Logger.Log("Hello World in SD Card");
+            Debug.Print(Logger.LogFilePath);
 
             Debug.Print("Enviando mensaje...");
             SendEvent("Hello World");
@@ -54,6 +45,7 @@ namespace IoTDemo.NetworkTest
                 httpWebRequest.Accept = "application/json";
                 httpWebRequest.ContentType = "application/json; charset=UTF-8";
                 httpWebRequest.ContentLength = json.ToCharArray().Length;
+
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     streamWriter.Write(json);
@@ -71,6 +63,7 @@ namespace IoTDemo.NetworkTest
             catch (Exception ex)
             {
                 Debug.Print("Error enviando evento: " + ex.Message);
+                Logger.Log("Error: " + ex.Message);
             }
         }
     }

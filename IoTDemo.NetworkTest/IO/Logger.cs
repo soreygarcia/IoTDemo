@@ -7,8 +7,7 @@
 | Limited permission is hereby granted to reproduce and modify this 
 | copyrighted material provided that this notice is retained 
 | in its entirety in any such reproduction or modification.
-|http://embedded-lab.com/blog/?p=6690
-| Author: ANir
+| Author: ANir http://embedded-lab.com/blog/?p=6690
 | First Version Date: 2013/2/14
 +-------------------------------------------------------------------------------*/
 
