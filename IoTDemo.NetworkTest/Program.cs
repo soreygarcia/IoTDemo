@@ -22,8 +22,8 @@ namespace IoTDemo.NetworkTest
             Logger.PrefixDateTime = true; // add a time stamp on each Log call. Note: Netduino time is not same as clock time.
 
             // any number of arguments can be passed. They will appended by a white space
-            Logger.Log("Hello World in SD Card");
-            Debug.Print(Logger.LogFilePath);
+            //Logger.Log("Hello World in SD Card");
+            //Debug.Print(Logger.LogFilePath);
 
             Debug.Print("Enviando mensaje...");
             SendEvent("Hello World");
@@ -37,8 +37,7 @@ namespace IoTDemo.NetworkTest
                 EventLog eventLog = new EventLog() { Description = log };
                 string json = Json.NETMF.JsonSerializer.SerializeObject(eventLog);
 
-                Debug.Print("Log enviado");
-                Debug.Print(json);
+                Debug.Print("Mensaje " + json);
 
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://cloudrsmed.azure-mobile.net/tables/EventLog");
                 httpWebRequest.Method = "POST";
@@ -63,7 +62,7 @@ namespace IoTDemo.NetworkTest
             catch (Exception ex)
             {
                 Debug.Print("Error enviando evento: " + ex.Message);
-                Logger.Log("Error: " + ex.Message);
+                //Logger.Log("Error: " + ex.Message);
             }
         }
     }
